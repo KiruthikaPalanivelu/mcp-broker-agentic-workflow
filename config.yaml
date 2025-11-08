@@ -1,0 +1,46 @@
+# MCP Broker Configuration
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  reload: true
+  log_level: "INFO"
+
+broker:
+  broker_id: null  # Auto-generated if null
+  max_agents: 100
+  max_tasks: 1000
+  knowledge_retention_days: 365
+  enable_persistence: true
+
+agents:
+  enable_auto_scaling: true
+  min_agents: 1
+  max_agents: 50
+  timeout_seconds: 300
+
+tasks:
+  enable_retry: true
+  max_retries: 3
+  retry_backoff_seconds: 5
+  task_timeout_seconds: 3600
+
+knowledge:
+  max_items: 10000
+  enable_indexing: true
+  index_type: "memory"
+  cache_enabled: true
+  cache_ttl_seconds: 3600
+
+security:
+  enable_auth: false
+  api_key_required: false
+  cors_origins: ["*"]
+  rate_limit_per_minute: 60
+
+monitoring:
+  enable_metrics: true
+  metrics_port: 9090
+  enable_tracing: false
+  enable_profiling: false
